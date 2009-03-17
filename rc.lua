@@ -411,8 +411,8 @@ end)
 -- Hook called every second
 awful.hooks.timer.register(1, function ()
     -- For unix time_t lovers
-    mytextbox.text = " " .. os.time() .. " time_t "
+    -- mytextbox.text = " " .. os.time() .. " time_t "
     -- Otherwise use:
-    -- mytextbox.text = " " .. os.date() .. " "
+    mytextbox.text = " " .. os.date("%a %d. %b %Y %H:%M") .. " "
 end)
 -- }}}
