@@ -1,11 +1,12 @@
 -- Include awesome libraries, with lots of useful function!
 require("awful")
 require("beautiful")
+require("revelation")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- The default is a dark theme
-theme_path = "/home/adam/.config/awesome/themes/default/theme"
+theme_path = "/home/adam/.config/awesome/theme"
 -- Uncommment this for a lighter theme
 -- theme_path = "/usr/share/awesome/themes/sky/theme"
 
@@ -290,6 +291,10 @@ for i = 1, keynumber do
                        end
                    end):add()
 end
+
+-- Activate Revelation (Expose like thing)
+keybinding({ modkey }, "F2", revelation.revelation):add()
+
 -- }}}
 
 -- {{{ Hooks
@@ -413,6 +418,11 @@ awful.hooks.timer.register(1, function ()
     -- For unix time_t lovers
     -- mytextbox.text = " " .. os.time() .. " time_t "
     -- Otherwise use:
-    mytextbox.text = " " .. os.date("%a %d. %b %Y %H:%M") .. " "
+    mytextbox.text = " " .. os.date("%a %d. %b %Y <span color=\"#eeeeee\">%H:%M</span>") .. " "
 end)
 -- }}}
+
+-- Autostart these apps
+os.execute("nm-applet &")
+os.execute("kopete &")
+os.execute("kmix &")
