@@ -208,8 +208,8 @@ for i = 1, keynumber do
                    end):add()
 end
 
-keybinding({ modkey }, "Left", awful.tag.viewprev):add()
-keybinding({ modkey }, "Right", awful.tag.viewnext):add()
+keybinding({ modkey, "Shift" }, "Left", awful.tag.viewprev):add()
+keybinding({ modkey, "Shift" }, "Right", awful.tag.viewnext):add()
 keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
 
 -- Standard program
@@ -225,10 +225,10 @@ keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
 keybinding({ modkey }, "m", awful.client.maximize):add()
 keybinding({ modkey }, "f", function () if client.focus then client.focus.fullscreen = not client.focus.fullscreen end end):add()
 keybinding({ modkey, "Shift" }, "c", function () if client.focus then client.focus:kill() end end):add()
-keybinding({ modkey }, "j", function () awful.client.focus.byidx(1); if client.focus then client.focus:raise() end end):add()
-keybinding({ modkey }, "k", function () awful.client.focus.byidx(-1);  if client.focus then client.focus:raise() end end):add()
-keybinding({ modkey, "Shift" }, "j", function () awful.client.swap.byidx(1) end):add()
-keybinding({ modkey, "Shift" }, "k", function () awful.client.swap.byidx(-1) end):add()
+keybinding({ modkey }, "Left", function () awful.client.focus.byidx(1); if client.focus then client.focus:raise() end end):add()
+keybinding({ modkey }, "Right", function () awful.client.focus.byidx(-1);  if client.focus then client.focus:raise() end end):add()
+keybinding({ modkey, "Control" }, "Left", function () awful.client.swap.byidx(1) end):add()
+keybinding({ modkey, "Control" }, "Right", function () awful.client.swap.byidx(-1) end):add()
 keybinding({ modkey, "Control" }, "j", function () awful.screen.focus(1) end):add()
 keybinding({ modkey, "Control" }, "k", function () awful.screen.focus(-1) end):add()
 keybinding({ modkey, "Control" }, "space", awful.client.togglefloating):add()
@@ -239,8 +239,8 @@ keybinding({ modkey }, "u", awful.client.urgent.jumpto):add()
 keybinding({ modkey, "Shift" }, "r", function () if client.focus then client.focus:redraw() end end):add()
 
 -- Layout manipulation
-keybinding({ modkey }, "l", function () awful.tag.incmwfact(0.05) end):add()
-keybinding({ modkey }, "h", function () awful.tag.incmwfact(-0.05) end):add()
+keybinding({ modkey }, "Up", function () awful.tag.incmwfact(0.05) end):add()
+keybinding({ modkey }, "Down", function () awful.tag.incmwfact(-0.05) end):add()
 keybinding({ modkey, "Shift" }, "h", function () awful.tag.incnmaster(1) end):add()
 keybinding({ modkey, "Shift" }, "l", function () awful.tag.incnmaster(-1) end):add()
 keybinding({ modkey, "Control" }, "h", function () awful.tag.incncol(1) end):add()
