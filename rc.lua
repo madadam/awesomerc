@@ -426,13 +426,20 @@ awful.hooks.arrange.register(function (screen)
     end
 end)
 
--- Hook called every minute
-awful.hooks.timer.register(60, function ()
-    mytextbox.text = os.date(" %a %b %d, %H:%M ")
-end)
+-- Clock
+function update_clock()
+    mytextbox.text = os.date(" %a %d. %b %Y, <span color=\"#eeeeee\">%H:%M</span> ")
+end
+
+-- Call it on start
+update_clock()
+
+-- Then every minute
+awful.hooks.timer.register(60, update_clock)
 -- }}}
 
 -- Autostart these apps
-os.execute("nm-applet &")
-os.execute("kopete &")
-os.execute("kmix &")
+-- (run_once is simple shell script that runs given program only if it is not already running)
+os.execute("run_once nm-applet &")
+os.execute("run_once kopete &")
+os.execute("run_once kmix &")
