@@ -62,8 +62,9 @@ floatapps =
 -- Use the screen and tags indices.
 apptags =
 {
-    -- ["Firefox"] = { screen = 1, tag = 2 },
-    -- ["mocp"] = { screen = 2, tag = 4 },
+    ["Gran Paradiso"] = { screen = 1, tag = 1}, -- This is firefox actually...
+    ["Konsole"] = { screen = 1, tag = 2},
+    ["Gvim"] = { screen = 1, tag = 2}
 }
 
 -- Define if we want to use titlebar on all applications.
