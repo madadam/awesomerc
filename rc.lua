@@ -5,6 +5,10 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+-- Various useful utilities
+require("useful_eval")
+require("run_or_raise")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- The default is a dark theme
@@ -237,7 +241,8 @@ globalkeys =
         function ()
             awful.prompt.run({ prompt = "Run Lua code: " },
             mypromptbox[mouse.screen],
-            awful.util.eval, awful.prompt.bash,
+            -- awful.util.eval, awful.prompt.bash,
+            useful_eval, awful.prompt.bash,
             awful.util.getdir("cache") .. "/history_eval")
         end),
 }
@@ -310,6 +315,17 @@ for i = 1, keynumber do
                      end
                  end))
 end
+
+-- Run or raise keybindings
+table.insert(globalkeys, key({ modkey }, "f",
+  function() run_or_raise("firefox", { class = "Gran Paradiso" }) end))
+
+table.insert(globalkeys, key({ modkey }, "e",
+  function() run_or_raise("gvim", { class = "Gvim" }) end))
+
+table.insert(globalkeys, key({ modkey }, "s",
+  function() run_or_raise("konsole", { class = "Konsole" }) end))
+
 
 -- Set keys
 root.keys(globalkeys)
@@ -440,6 +456,9 @@ awful.hooks.timer.register(60, update_clock)
 
 -- Autostart these apps
 -- (run_once is simple shell script that runs given program only if it is not already running)
+
+-- os.execute("run_once xcompmgr -f &")
+
 os.execute("run_once nm-applet &")
 os.execute("run_once kopete &")
 os.execute("run_once kmix &")
