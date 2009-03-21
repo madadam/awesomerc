@@ -461,4 +461,5 @@ awful.hooks.timer.register(60, update_clock)
 
 os.execute("run_once nm-applet &")
 os.execute("run_once kopete &")
+os.execute("run_once skype &")
 os.execute("run_once kmix &")
