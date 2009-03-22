@@ -250,7 +250,7 @@ globalkeys =
 -- Client awful tagging: this is useful to tag some clients and then do stuff like move to tag on them
 clientkeys =
 {
-    key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+    key({ modkey, "Shift"   }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
@@ -457,7 +457,7 @@ awful.hooks.timer.register(60, update_clock)
 -- Autostart these apps
 -- (run_once is simple shell script that runs given program only if it is not already running)
 
--- os.execute("run_once xcompmgr -f &")
+os.execute("run_once xcompmgr -f &")
 
 os.execute("run_once nm-applet &")
 os.execute("run_once kopete &")
